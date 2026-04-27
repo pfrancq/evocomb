@@ -1,0 +1,20 @@
+{
+    "objects": [
+        {"name": "Neural networks", "attributes": ["artificial intelligence", "learning", "neural networks"]},
+        {"name": "Deep learning", "attributes": ["artificial intelligence", "learning", "neural networks", "deep"]},
+        {"name": "Reinforcement learning", "attributes": ["artificial intelligence", "learning", "rewards"]},
+        {"name": "Machine learning", "attributes": ["artificial intelligence", "learning"]},
+        {"name": "Genetic algorithms", "attributes": ["artificial intelligence", "optimization", "evolution"]},
+        {"name": "Grouping genetic algorithms", "attributes": ["artificial intelligence", "optimization", "evolution", "grouping"]},
+        {"name": "Simulated annealing", "attributes": ["optimization", "metaheuristics"]},
+        {"name": "Tabu search", "attributes": ["optimization", "metaheuristics", "memory"]},
+        {"name": "PROMETHEE", "attributes": ["optimization", "multiple criteria", "decision"]},
+        {"name": "Choquet integral", "attributes": ["multiple criteria", "decision", "aggregation"]},
+        {"name": "Bin packing", "attributes": ["optimization", "grouping", "combinatorics"]},
+        {"name": "Clustering", "attributes": ["learning", "grouping", "similarity"]}
+    ],
+    "config": {
+        "population_size": 16,
+        "max_generations": 30
+    }
+}

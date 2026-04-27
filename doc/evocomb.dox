@@ -1,0 +1,6 @@
+/**
+ * @namespace evocomb
+ * EvoComb: all the classes, functions and types of the
+ * libraries are in this namespace. The classes are prefixed by R (for example RMatrix) and the files by r_
+ * (for example r_matrix.hpp), a convention inherited from the original R Library.
+ */

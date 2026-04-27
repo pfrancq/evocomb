@@ -1,0 +1,55 @@
+{
+    "size": [100, 100],
+    "terminals": [
+        {"id": "IN", "pins": [{"id": "in", "layer": "Met2", "rect": [-2, 20, 0, 22]}]},
+        {"id": "OUT", "pins": [{"id": "out", "layer": "Met2", "rect": [100, 70, 102, 72]}]}
+    ],
+    "masters": [
+        {"id": "Inverter", "polygon": [[0, 0], [10, 0], [10, 10], [0, 10]],
+         "terminals": [{"id": "A", "pins": [{"id": "a", "layer": "Met1", "rect": [1, 4, 2, 6]}]},
+                       {"id": "Y", "pins": [{"id": "y", "layer": "Met1", "rect": [8, 4, 9, 6]}]}]},
+        {"id": "Nand", "polygon": [[0, 0], [20, 0], [20, 10], [0, 10]],
+         "terminals": [{"id": "A", "pins": [{"id": "a", "layer": "Met1", "rect": [1, 2, 2, 3]}]},
+                       {"id": "B", "pins": [{"id": "b", "layer": "Met1", "rect": [1, 7, 2, 8]}]},
+                       {"id": "Y", "pins": [{"id": "y", "layer": "Met1", "rect": [18, 4, 19, 6]}]}]},
+        {"id": "Latch", "polygon": [[0, 0], [20, 0], [20, 10], [10, 10], [10, 20], [0, 20]],
+         "terminals": [{"id": "D", "pins": [{"id": "d", "layer": "Met1", "rect": [1, 17, 2, 18]}]},
+                       {"id": "Q", "pins": [{"id": "q", "layer": "Met1", "rect": [18, 1, 19, 2]}]}]},
+        {"id": "Buffer", "polygon": [[0, 0], [30, 0], [30, 20], [0, 20]],
+         "terminals": [{"id": "A", "pins": [{"id": "a", "layer": "Met1", "rect": [1, 9, 2, 11]}]},
+                       {"id": "Y", "pins": [{"id": "y1", "layer": "Met1", "rect": [28, 4, 29, 6]},
+                                            {"id": "y2", "layer": "Met1", "rect": [28, 14, 29, 16]}]}]}
+    ],
+    "instances": [
+        {"id": "U1", "master": "Inverter"},
+        {"id": "U2", "master": "Inverter"},
+        {"id": "U3", "master": "Nand"},
+        {"id": "U4", "master": "Nand"},
+        {"id": "U5", "master": "Nand"},
+        {"id": "U6", "master": "Latch"},
+        {"id": "U7", "master": "Latch"},
+        {"id": "U8", "master": "Buffer"},
+        {"id": "U9", "master": "Inverter"},
+        {"id": "U10", "master": "Buffer"}
+    ],
+    "nets": [
+        {"id": "in", "weight": 2, "connect": [{"terminal": "IN"}, {"instance": "U8", "terminal": "A"}]},
+        {"id": "n1", "connect": [{"instance": "U8", "terminal": "Y"}, {"instance": "U1", "terminal": "A"}, {"instance": "U3", "terminal": "A"}]},
+        {"id": "n2", "connect": [{"instance": "U1", "terminal": "Y"}, {"instance": "U4", "terminal": "A"}]},
+        {"id": "n3", "connect": [{"instance": "U3", "terminal": "Y"}, {"instance": "U6", "terminal": "D"}]},
+        {"id": "n4", "connect": [{"instance": "U4", "terminal": "Y"}, {"instance": "U7", "terminal": "D"}]},
+        {"id": "n5", "weight": 3, "connect": [{"instance": "U6", "terminal": "Q"}, {"instance": "U3", "terminal": "B"}, {"instance": "U5", "terminal": "A"}]},
+        {"id": "n6", "weight": 3, "connect": [{"instance": "U7", "terminal": "Q"}, {"instance": "U4", "terminal": "B"}, {"instance": "U5", "terminal": "B"}]},
+        {"id": "n7", "connect": [{"instance": "U5", "terminal": "Y"}, {"instance": "U2", "terminal": "A"}]},
+        {"id": "n8", "connect": [{"instance": "U2", "terminal": "Y"}, {"instance": "U9", "terminal": "A"}]},
+        {"id": "n9", "connect": [{"instance": "U9", "terminal": "Y"}, {"instance": "U10", "terminal": "A"}]},
+        {"id": "out", "weight": 2, "connect": [{"instance": "U10", "terminal": "Y"}, {"terminal": "OUT"}]}
+    ],
+    "config": {
+        "log": {"path": "vlsi.log", "level": "info"},
+        "population_size": 16,
+        "max_generations": 50,
+        "ga": {"maximize": false, "nb_threads": 4, "mutation_frequency": 5, "handle_duplicates": true, "verify": true},
+        "ga2d": {"heuristic": "bottom_left", "all_orientations": true, "weighted_distances": true}
+    }
+}

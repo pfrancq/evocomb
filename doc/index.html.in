@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EvoComb @PROJECT_VERSION@</title>
+<style>
+  :root { --bg: #ffffff; --fg: #333333; --muted: #6b7280; --link: #1779c4; --card: #f7f8f9; --border: #e5e7eb; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1c1d1f; --fg: #d2dbde; --muted: #9ca3af; --link: #1982d2; --card: #252628; --border: #38393b; }
+  }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         max-width: 44em; margin: 4em auto; padding: 0 1em; line-height: 1.6; }
+  h1 { font-weight: 700; margin-bottom: 0.2em; }
+  p.version { color: var(--muted); margin-top: 0; }
+  a.card { display: block; padding: 1em 1.2em; margin: 1em 0; background: var(--card); border: 1px solid var(--border);
+           border-radius: 8px; color: var(--fg); text-decoration: none; }
+  a.card:hover { border-color: var(--link); }
+  a.card strong { color: var(--link); font-size: 1.15em; }
+</style>
+</head>
+<body>
+<h1>EvoComb</h1>
+<p class="version">Version @PROJECT_VERSION@</p>
+<a class="card" href="core/index.html"><strong>evocomb::core</strong><br>Tools, I/O, matrices, graphs and geometry.</a>
+<a class="card" href="optimization/index.html"><strong>evocomb::optimization</strong><br>Genetic algorithms and multi-criteria methods.</a>
+</body>
+</html>

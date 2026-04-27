@@ -1,0 +1,10 @@
+//------------------------------------------------------------------------------
+#pragma once
+
+
+//------------------------------------------------------------------------------
+// include files for ANSI C/C++
+#include <string>
+
+// CMake will replace @CMAKE_SOURCE_DIR@ with the actual path
+static const std::string PROJECT_ROOT = "@CMAKE_SOURCE_DIR@/";
