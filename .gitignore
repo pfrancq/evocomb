@@ -39,3 +39,9 @@
 
 # debug information files
 *.dwo
+
+# Log of the tests
+app.log
+
+# Generated documentation
+doc/html/

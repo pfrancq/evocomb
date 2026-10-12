@@ -1,0 +1,25 @@
+#------------------------------------------------------------------------------
+# Development container of EvoComb (see Dockerfile). From the root of EvoComb:
+#   docker compose -f docker/compose.yaml build
+#   docker compose -f docker/compose.yaml run --rm evocomb
+services:
+  evocomb:
+    image: evocomb-dev
+    platform: linux/arm64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Sources of EvoComb (the parent directory of docker/) and build directories
+    volumes:
+      - ..:/evocomb
+      - evocomb-build:/build
+    # Required by gdb (breakpoints, attach) and valgrind
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
+    stdin_open: true
+    tty: true
+
+volumes:
+  evocomb-build:

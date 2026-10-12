@@ -1,0 +1,25 @@
+/**
+ * @defgroup optimization_ga Genetic Algorithm (GA)
+ * Generic genetic algorithm: instance, population and chromosomes, fitness
+ * strategies (direct or PROMETHEE) and listeners.
+ *
+ * @defgroup optimization_gga Grouping Genetic Algorithm (GGA)
+ * Groups, heuristics (first-fit) and operators of the grouping genetic
+ * algorithm.
+ *
+ * @defgroup optimization_nngga Nearest-Neighbors GGA (NNGGA)
+ * Grouping genetic algorithm based on the nearest neighbors of the objects.
+ *
+ * @defgroup optimization_sgga Similarity-based GGA (SGGA)
+ * Grouping genetic algorithm based on the similarities between the objects.
+ *
+ * @defgroup optimization_hga Hierarchical Genetic Algorithm (HGA)
+ * Trees of nodes containing objects.
+ *
+ * @defgroup optimization_ga2d 2D Placement Genetic Algorithm (GA2D)
+ * Objects, nets, layouts and placement heuristics (bottom-left, edge,
+ * center).
+ *
+ * @defgroup optimization_multicriteria Multi-criteria Decision
+ * PROMETHEE method and 2-additive Choquet integral.
+ */

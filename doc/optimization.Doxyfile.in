@@ -1,0 +1,23 @@
+# Doxygen configuration of the documentation of evocomb::optimization.
+@INCLUDE               = @EVOCOMB_DOC_BUILD_DIR@/Doxyfile.common
+
+PROJECT_NAME           = "evocomb::optimization"
+PROJECT_BRIEF          = "EvoComb - Optimization (genetic algorithms and multi-criteria methods)"
+INPUT                  = @PROJECT_SOURCE_DIR@/doc/evocomb.dox @PROJECT_SOURCE_DIR@/doc/optimization_groups.dox @PROJECT_SOURCE_DIR@/doc/optimization.md @PROJECT_SOURCE_DIR@/src/optimization
+USE_MDFILE_AS_MAINPAGE = @PROJECT_SOURCE_DIR@/doc/optimization.md
+STRIP_FROM_PATH        = @PROJECT_SOURCE_DIR@/src/optimization
+STRIP_FROM_INC_PATH    = @PROJECT_SOURCE_DIR@/src/optimization
+HTML_OUTPUT            = optimization
+HTML_HEADER            = @EVOCOMB_DOC_HTML_HEADER@
+
+# The classes are grouped by directory (see cmake/EvoCombDocFilter.cmake)
+INPUT_FILTER           = @EVOCOMB_DOC_INPUT_FILTER@
+WARN_LOGFILE           = @EVOCOMB_DOC_BUILD_DIR@/optimization_warnings.log
+
+# Links to the classes of evocomb::core (relative, so that they also work once
+# installed)
+TAGFILES               = @EVOCOMB_DOC_DIR@/core/evocomb_core.tag=../core
+
+# Tag file used by the projects using EvoComb (see EVOCOMB_DOXYGEN_TAGFILES in
+# EvoCombConfig.cmake)
+GENERATE_TAGFILE       = @EVOCOMB_DOC_DIR@/optimization/evocomb_optimization.tag

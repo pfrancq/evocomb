@@ -1,0 +1,21 @@
+/**
+ * @defgroup core_app Application
+ * Logging (evocomb::RLogger and the LOG_* macros).
+ *
+ * @defgroup core_tools Tools
+ * Exceptions, JSON values, pool of threads, string tools and common
+ * definitions.
+ *
+ * @defgroup core_io Input/Output
+ * Files, text and JSON parsers.
+ *
+ * @defgroup core_matrix Vectors and Matrices
+ * Full, triangular, symmetric and sparse matrices, matrices ordered by
+ * decreasing values, and matrices stored on disk.
+ *
+ * @defgroup core_graph Graphs
+ * Graphs with weighted edges and minimum spanning trees.
+ *
+ * @defgroup core_geometry Geometry
+ * Points, rectangles and rectilinear polygons.
+ */

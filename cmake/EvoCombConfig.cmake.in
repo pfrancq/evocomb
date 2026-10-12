@@ -1,0 +1,66 @@
+# EvoCombConfig.cmake
+#
+# CMake package of EvoComb. A project uses it with:
+#
+#   find_package(EvoComb 1.0 REQUIRED)
+#   target_link_libraries(myapp PRIVATE evocomb::evocomb)
+#
+# Imported targets:
+#   evocomb::core           Core library (tools, I/O, matrices, graphs, geometry...).
+#   evocomb::optimization   Genetic algorithms (GA, GGA, NNGGA, SGGA, HGA, GA2D) and
+#                       multi-criteria methods (depends on evocomb::core).
+#   evocomb::evocomb            Both libraries.
+#
+# The targets give the include directories, the C++17 requirement and the
+# dependencies (Threads), so that nothing else must be configured.
+#
+# Documentation (if it was generated with Doxygen):
+#   EVOCOMB_DOC_FOUND                      TRUE if the documentation is available.
+#   EVOCOMB_DOC_DIR                        Directory of the HTML documentation.
+#   EVOCOMB_DOXYGEN_TAGFILE_CORE           Tag file of evocomb::core.
+#   EVOCOMB_DOXYGEN_TAGFILE_OPTIMIZATION   Tag file of evocomb::optimization.
+#   EVOCOMB_DOXYGEN_TAGFILES               List of "<tag file>=<HTML directory>"
+#                                      for the Doxygen TAGFILES option, so
+#                                      that the documentation of a project
+#                                      links to the classes of EvoComb:
+#
+#     find_package(Doxygen)
+#     set(DOXYGEN_TAGFILES ${EVOCOMB_DOXYGEN_TAGFILES})
+#     doxygen_add_docs(mydoc ${PROJECT_SOURCE_DIR}/src)
+#
+#   or, in a Doxyfile configured by CMake:
+#
+#     TAGFILES = <value of EVOCOMB_DOXYGEN_TAGFILES_STRING>
+#
+#   EVOCOMB_DOXYGEN_TAGFILES_STRING        Same as EVOCOMB_DOXYGEN_TAGFILES, but as a
+#                                      string for a Doxyfile.
+#
+# The links point to the local HTML files. To point to an online version of
+# the documentation, use the tag files with another location, for example:
+#   "${EVOCOMB_DOXYGEN_TAGFILE_CORE}=https://example.org/evocomb/core"
+
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+find_dependency(Threads)
+
+include("${CMAKE_CURRENT_LIST_DIR}/EvoCombTargets.cmake")
+
+# Documentation
+set(EVOCOMB_DOC_DIR "@PACKAGE_EVOCOMB_CONFIG_DOC_DIR@")
+set(EVOCOMB_DOXYGEN_TAGFILE_CORE "${EVOCOMB_DOC_DIR}/core/evocomb_core.tag")
+set(EVOCOMB_DOXYGEN_TAGFILE_OPTIMIZATION "${EVOCOMB_DOC_DIR}/optimization/evocomb_optimization.tag")
+if(EXISTS "${EVOCOMB_DOXYGEN_TAGFILE_CORE}" AND EXISTS "${EVOCOMB_DOXYGEN_TAGFILE_OPTIMIZATION}")
+    set(EVOCOMB_DOC_FOUND TRUE)
+    set(EVOCOMB_DOXYGEN_TAGFILES
+            "${EVOCOMB_DOXYGEN_TAGFILE_CORE}=${EVOCOMB_DOC_DIR}/core"
+            "${EVOCOMB_DOXYGEN_TAGFILE_OPTIMIZATION}=${EVOCOMB_DOC_DIR}/optimization")
+    set(EVOCOMB_DOXYGEN_TAGFILES_STRING
+            "\"${EVOCOMB_DOXYGEN_TAGFILE_CORE}=${EVOCOMB_DOC_DIR}/core\" \"${EVOCOMB_DOXYGEN_TAGFILE_OPTIMIZATION}=${EVOCOMB_DOC_DIR}/optimization\"")
+else()
+    set(EVOCOMB_DOC_FOUND FALSE)
+    set(EVOCOMB_DOXYGEN_TAGFILES "")
+    set(EVOCOMB_DOXYGEN_TAGFILES_STRING "")
+endif()
+
+check_required_components(EvoComb)
